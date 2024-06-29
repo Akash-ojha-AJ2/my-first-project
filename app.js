@@ -14,9 +14,10 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const user = require("./models/user.js");
-const MongoStore = require("connect-mongo")
+const MongoStore = require("connect-mongo");
+const http = require("http");
 
-
+const server = http.createServer(app);
 
 const listingsRouter = require("./routes/listing.js");
 const reviewrouter = require("./routes/review.js");
@@ -101,6 +102,6 @@ app.use((err,req,res,next) => {
 });
 
 
-app.listen(8080, () => {
+server.listen(8080, () => {
   console.log("server is listening to port 8080");
 });
